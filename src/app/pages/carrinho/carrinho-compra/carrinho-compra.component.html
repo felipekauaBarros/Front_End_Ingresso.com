@@ -1,0 +1,15 @@
+<div>
+    <p></p>
+<fieldset>
+    <p mat-line></p>
+    <mat-list-item *ngFor="let item of adicionaCarrinho">
+        <fieldset>
+            <mat-divider></mat-divider>
+            <h2>{{ item.ingresso.descricaoIngresso }}</h2>
+            <p>Valor Total: R$ {{ item.compraIngresso.quantidadeCompra }}</p>
+
+    <button mat-raised-button color="warn" (click)="finalizarCompra()">Finalizar Compra</button>
+        </fieldset>
+    </mat-list-item>
+</fieldset>
+</div>

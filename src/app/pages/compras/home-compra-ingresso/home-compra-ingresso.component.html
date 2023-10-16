@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-header >
+    <mat-card-title >
+
+    </mat-card-title>
+  </mat-card-header>
+  <h1 class="texto"> Ingressos Disponíveis</h1>
+  <mat-card-actions class="Home">
+      <button mat-raised-button class="btecarrinho" [routerLink]="['/carrinhoCompra']">
+          <span>Ver Carrinho</span>
+          <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+  </mat-card-actions>
+  <mat-card-content>
+    <router-outlet>
+
+    </router-outlet>
+  </mat-card-content>
+  <mat-paginator [length]="100"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</mat-card>

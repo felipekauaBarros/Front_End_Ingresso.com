@@ -1,0 +1,43 @@
+<div>
+  <form class="textoBuscaCompra">
+    <input type="text" class="inputBuscar" id="idIngresso" [formControl]="nomeBusca"
+           placeholder="Digite para buscar ingresso"
+           [matAutocomplete]="auto">
+    <button mat-raised-button color="warn" (click)="buscarIngresso()" class="btPesquisarIngresso">Buscar</button>
+    <button mat-raised-button color="warn" (click)="limparBusca()" class="btPesquisarIngresso">Limpar</button>
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let item of filtrarIngressos | async" [value]="item">
+              {{ displayFn(item) }}
+          </mat-option>
+      </mat-autocomplete>
+  </form>
+</div>
+<p></p>
+<fieldset>
+    <p mat-line></p>
+    <mat-list-item *ngFor="let item of ingressosFiltrados">
+        <fieldset>
+            <mat-divider></mat-divider>
+            <h2 matLine class="listnomeEvento">{{item.ingresso.nomeEvento}}</h2>
+            <h4 matLine class="listdescricaoIngresso">{{item.ingresso.descricaoIngresso}}</h4>
+            <p mat-line><span>Local: {{item.ingresso.loCal}}</span></p>
+            <p mat-line class="ingressodataIngresso">Data do Ingresso: {{item.ingresso.dataIngresso}}</p>
+            <p matLine>Valor do Ingresso: R$ {{item.ingresso.valorIngresso}}</p>
+            <p mat-line>Quantidade disponível: {{item.ingresso.quantidadeIngresso}}</p>
+
+            <p matLine><b>Quantidade a comprar: <button mat-raised-button class="btmenosquantidade" (click)="diminuirQuantidade(item.ingresso, item.compraIngresso)">-</button>
+                {{item.compraIngresso.quantidadeCompra || 0}}
+                <button mat-raised-button class="btmaisquantidade" (click)="aumentarQuantidade(item.ingresso, item.compraIngresso)">+</button></b> </p>
+            <button mat-raised-button class="btadicionarcompra" color="warn"   (click)="adicionarCarrinho(item.ingresso, item.compraIngresso)">
+                <span>Adicionar Compra no Carrinho</span></button>
+        </fieldset>
+        <p></p>
+    </mat-list-item>
+    <p mat-line></p>
+
+    <p mat-line></p>
+</fieldset>
+
+
+
+
